@@ -1,10 +1,12 @@
 // scene Setup
+var viewport_width = 500;
+var viewport_height = 500;
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+var camera = new THREE.PerspectiveCamera(45, viewport_width/viewport_height, 0.1, 1000);
 var renderer = new THREE.WebGLRenderer({ antialias: true });
 
-renderer.setClearColor(0xEEEEEE, 1.0);
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(0xFFFFFF, 1.0);
+renderer.setSize(viewport_width, viewport_height);
 var webglContainer = document.getElementById('webgl-container');
 webglContainer.appendChild(renderer.domElement);
 
@@ -123,18 +125,22 @@ var randomize = function(){
   var skin_material = getMaterialByName('Mat.Skin');
   skin_material.color = skin_color;
   guiControls.colorSkin = '#'+skin_color.getHexString();
+  $('#colorselector_skin').colorselector('setColor', '#'+skin_color.getHexString().toUpperCase());
 
   var leg_material = getMaterialByName('Mat.Legs');
   leg_material.color = leg_color;
   guiControls.colorLegs = '#'+leg_color.getHexString();
+  $('#colorselector_legs').colorselector('setColor', '#'+leg_color.getHexString().toUpperCase());
 
   var torso_material = getMaterialByName('Mat.Torso');
   torso_material.color = torso_color;
   guiControls.colorBody = '#'+torso_color.getHexString();
+  $('#colorselector_body').colorselector('setColor', '#'+torso_color.getHexString().toUpperCase());
 
   var hair_material = getMaterialByName('Mat.Hair');
   hair_material.color = hair_color;
   guiControls.colorHair = '#'+hair_color.getHexString();
+  $('#colorselector_hair').colorselector('setColor', '#'+hair_color.getHexString().toUpperCase());
 
   var tshirtImg = randomObject(tshirtImages);
   setTshirtImage(tshirtImg);
@@ -189,28 +195,16 @@ gui.add(guiControls, 'showLegs').onChange(function (e) {
   render();
 });
 gui.addColor(guiControls, 'colorBody').onChange(function (e) {
-  var color = new THREE.Color(e);
-  var material = getMaterialByName('Mat.Torso');
-  material.color = color;
-  render();
+  setMaterialColor('Mat.Torso', e);
 });
 gui.addColor(guiControls, 'colorLegs').onChange(function (e) {
-  var color = new THREE.Color(e);
-  var material = getMaterialByName('Mat.Legs');
-  material.color = color;
-  render();
+  setMaterialColor('Mat.Legs', e);
 });
 gui.addColor(guiControls, 'colorHair').onChange(function (e) {
-  var color = new THREE.Color(e);
-  var material = getMaterialByName('Mat.Hair');
-  material.color = color;
-  render();
+  setMaterialColor('Mat.Hair', e);
 });
 gui.addColor(guiControls, 'colorSkin').onChange(function (e) {
-  var color = new THREE.Color(e);
-  var material = getMaterialByName('Mat.Skin');
-  material.color = color;
-  render();
+  setMaterialColor('Mat.Skin', e);
 });
 gui.add(guiControls, 'TShirt', tshirtImages).onChange(function (e) {
   setTshirtImage(e);

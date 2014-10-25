@@ -4,31 +4,82 @@
   <title>Lego Configurator</title>
   <meta charset="utf-8">
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-    }
-    #gui-container {
-      position:absolute;
-      z-index:1;
-      top:0;
-      left:0
-    }
-  </style>
+  <link rel="stylesheet" href="libs/bootstrap-3.0.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/lumen.theme.bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="libs/bootstrap-colorselector-master/lib/bootstrap-colorselector-0.2.0/css/bootstrap-colorselector.css">
 </head>
 <body>
   <!-- Credits LEGO Model: http://tf3dm.com/3d-model/lego-man-35246.html -->
   <div id="webgl-container"></div>
   <div id="gui-container"></div>
+  <div id="controls-container">
 
-  <script type="text/javascript" src="js/three.js"></script>
-  <script type="text/javascript" src="js/ColladaLoader.js"></script>
-  <script type="text/javascript" src="js/OrbitControls.js"></script>
-  <script type="text/javascript" src="js/dat.gui.js"></script>
+    <div id="controls">
+      <h3>Erstelle deine Lego Figur!</h3>
+      <div class="row">
+        <div class="col-md-1">
+          <select id="colorselector_body" onchange="setMaterialColor('Mat.Torso', this.value)"></select>
+        </div>
+        <div class="col-md-5">
+          Farbe T-Shirt
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-1">
+          <select id="colorselector_legs" onchange="setMaterialColor('Mat.Legs', this.value)"></select>
+        </div>
+        <div class="col-md-5">
+          Farbe Hosen
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-1">
+          <select id="colorselector_skin" onchange="setMaterialColor('Mat.Skin', this.value)"></select>
+        </div>
+        <div class="col-md-5">
+          Farbe Haut
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-1">
+          <select id="colorselector_hair" onchange="setMaterialColor('Mat.Hair', this.value)"></select>
+        </div>
+        <div class="col-md-5">
+          Farbe Haare
+        </div>
+      </div>
+      <br>
+      <button type="button" class="btn btn-primary" onclick="randomize()">Zufallsfigur generieren</button>
 
-  <script type="text/javascript" src="config.js"></script>
-  <script type="text/javascript" src="helpers.js"></script>
-  <script type="text/javascript" src="script.js"></script>
+    </div>
+
+
+  </div>
+
+  <script type="text/javascript" src="libs/three.js"></script>
+  <script type="text/javascript" src="libs/ColladaLoader.js"></script>
+  <script type="text/javascript" src="libs/OrbitControls.js"></script>
+  <script type="text/javascript" src="libs/dat.gui.js"></script>
+
+  <script src="libs/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+  <script src="libs/bootstrap-3.0.3/js/bootstrap.min.js"></script>
+  <script src="libs/bootstrap-colorselector-master/lib/bootstrap-colorselector-0.2.0/js/bootstrap-colorselector.js"></script>
+
+  <script type="text/javascript" src="js/config.js"></script>
+  <script type="text/javascript" src="js/helpers.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+
+  <script>
+    fillColorPicker('#colorselector_body', legoColors);
+    fillColorPicker('#colorselector_legs', legoColors);
+    fillColorPicker('#colorselector_skin', skinColors);
+    fillColorPicker('#colorselector_hair', hairColors);
+    $('#colorselector_body,#colorselector_legs,#colorselector_skin,#colorselector_hair').colorselector();
+    $('#colorselector_body').colorselector('setColor', '#FF0000');
+    $('#colorselector_legs').colorselector('setColor', '#0000FF');
+    $('#colorselector_skin').colorselector('setColor', '#FFFF00');
+    $('#colorselector_hair').colorselector('setColor', '#733F00');
+  </script>
 </body>
 </html>

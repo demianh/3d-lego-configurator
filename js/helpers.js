@@ -38,9 +38,24 @@ function setDoubleSideRendering(){
   });
 }
 
+function setMaterialColor(materialName, hexcolor){
+  var color = new THREE.Color(hexcolor);
+  var material = getMaterialByName(materialName);
+  if(material){
+    material.color = color;
+    render();
+  }
+}
+
 function setTshirtImage(img){
   var texture = THREE.ImageUtils.loadTexture('img/tshirt/'+img, undefined, function(){ render(); });
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   var material = getMaterialByName('Mat.Tshirt');
   material.map = texture;
+}
+
+function fillColorPicker(element_id, colorset){
+  for (var i in colorset){
+    $(element_id).append('<option value="'+colorset[i]+'" data-color="'+colorset[i]+'">'+colorset[i]+'</option>');
+  }
 }
