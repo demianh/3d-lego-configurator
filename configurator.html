@@ -17,6 +17,32 @@
 
     <div id="controls">
       <h3>Erstelle deine Lego Figur!</h3>
+      <h4>Elemente</h4>
+      <label class="row">
+        <div class="col-md-1">
+          <input type="checkbox"/>
+        </div>
+        <div class="col-md-5">
+          Kopf
+        </div>
+      </label>
+      <label class="row">
+        <div class="col-md-1">
+          <input type="checkbox"/>
+        </div>
+        <div class="col-md-5">
+          Oberkörper
+        </div>
+      </label>
+      <label class="row">
+        <div class="col-md-1">
+          <input type="checkbox"/>
+        </div>
+        <div class="col-md-5">
+          Beine
+        </div>
+      </label>
+      <h4>Farben</h4>
       <div class="row">
         <div class="col-md-1">
           <select id="colorselector_body" onchange="setMaterialColor('Mat.Torso', this.value)"></select>
@@ -49,9 +75,15 @@
           Farbe Haare
         </div>
       </div>
-      <br>
+      <h4>T-Shirt</h4>
+      <div id="image_selector" class="clearfix"></div>
+      <h4>Zufall</h4>
       <button type="button" class="btn btn-primary" onclick="randomize()">Zufallsfigur generieren</button>
 
+      <br>
+      <br>
+
+      <h3 class="pull-right">Preis: 13.-</h3>
     </div>
 
 
@@ -75,6 +107,7 @@
     fillColorPicker('#colorselector_legs', legoColors);
     fillColorPicker('#colorselector_skin', skinColors);
     fillColorPicker('#colorselector_hair', hairColors);
+    fillImageSelector('#image_selector', tshirtImages);
     $('#colorselector_body,#colorselector_legs,#colorselector_skin,#colorselector_hair').colorselector();
     $('#colorselector_body').colorselector('setColor', '#FF0000');
     $('#colorselector_legs').colorselector('setColor', '#0000FF');

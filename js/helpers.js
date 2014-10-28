@@ -59,3 +59,9 @@ function fillColorPicker(element_id, colorset){
     $(element_id).append('<option value="'+colorset[i]+'" data-color="'+colorset[i]+'">'+colorset[i]+'</option>');
   }
 }
+
+function fillImageSelector(element_id, images){
+  for (var i in images){
+    $(element_id).append('<img src="img/tshirt/'+images[i]+'" onclick="setTshirtImage(\''+images[i]+'\')"/>');
+  }
+}
