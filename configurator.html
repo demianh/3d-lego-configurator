@@ -20,7 +20,7 @@
       <h4>Elemente</h4>
       <label class="row">
         <div class="col-md-1">
-          <input type="checkbox"/>
+          <input type="checkbox" onchange="toggleElements(['Head'], this.checked)" checked="checked"/>
         </div>
         <div class="col-md-5">
           Kopf
@@ -28,7 +28,7 @@
       </label>
       <label class="row">
         <div class="col-md-1">
-          <input type="checkbox"/>
+          <input type="checkbox" onchange="toggleElements(['L_Hand', 'R_Hand', 'L_Arm', 'R_Arm', 'Torso', 'TShirt'], this.checked)" checked="checked"/>
         </div>
         <div class="col-md-5">
           Oberkörper
@@ -36,7 +36,7 @@
       </label>
       <label class="row">
         <div class="col-md-1">
-          <input type="checkbox"/>
+          <input type="checkbox" onchange="toggleElements(['Legs'], this.checked)" checked="checked"/>
         </div>
         <div class="col-md-5">
           Beine
@@ -83,7 +83,7 @@
       <br>
       <br>
 
-      <h3 class="pull-right">Preis: 13.-</h3>
+      <h3 class="pull-right">Preis: <span id="price">10</span>.-</h3>
     </div>
 
 

@@ -87,6 +87,7 @@ loader.load('lego_man.dae', function (collada) {
   rectMesh.position.x = -7.35;
   rectMesh.position.y = -6;
   rectMesh.scale.set(s, s, s);
+  rectMesh.name = "TShirt";
   scene.add( rectMesh );
 
   setDoubleSideRendering();
@@ -187,6 +188,7 @@ gui.add(guiControls, 'showTorso').onChange(function (e) {
   scene.getObjectByName('R_Hand', true).visible = e;
   scene.getObjectByName('L_Arm', true).visible = e;
   scene.getObjectByName('R_Arm', true).visible = e;
+  scene.getObjectByName('Torso', true).visible = e;
   scene.getObjectByName('Torso', true).visible = e;
   render();
 });
